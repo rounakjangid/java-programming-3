@@ -1,12 +1,17 @@
 import java.util.Scanner;
  public class palindrome{
-    public static boolean isPal(String s)
+    public static boolean isPal(int number)
     {
-        if(s.length() == 0 || s.length() == 1)
-            return true;
-        if(s.charAt(0) == s.charAt(s.length()-1))
-            return isPal(s.substring(1, s.length()-1));
-
+        int palindrome = number;
+        int reverse = 0;
+        while (palindrome != 0) {
+            int remainder = palindrome % 10;
+            reverse = reverse * 10 + remainder;
+            palindrome = palindrome / 10;
+        }
+        if (number == reverse) {
+        return true;
+    }
         return false;
     }
 
@@ -15,12 +20,13 @@ import java.util.Scanner;
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the String for check:");
-        String string = scanner.nextLine();
+        int palindrome = scanner.nextInt();
 
-        if(isPal(string))
-            System.out.println(string + " is a palindrome");
+        if(isPal(palindrome))
+            System.out.println(palindrome + " is a palindrome");
         else
-            System.out.println(string + " is not a palindrome");
+         System.out.println(palindrome+ " is not a palindrome");
     }
 }
 
+         
